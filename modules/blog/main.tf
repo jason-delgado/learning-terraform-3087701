@@ -71,11 +71,11 @@ module "blog_alb" {
       target_type      = "instance"
       targets = {
         my_target = {
-          target_id = resource.aws_instance.blog01.instance.id
+          target_id = resource.aws_instance.blog01.id
           port = 80
         }
         my_other_target = {
-          target_id = resource.aws_instance.blog02.instance.id
+          target_id = resource.aws_instance.blog02.id
           port = 8080
         }
      }
