@@ -36,7 +36,7 @@ resource "aws_instance" "blog01" {
   vpc_security_group_ids = [module.blog_sg.security_group_id]
 
   tags = {
-    Name = "Learning Terraform"
+    Name = "Learning Terraform01"
   }
 }
 
@@ -47,7 +47,7 @@ resource "aws_instance" "blog02" {
   vpc_security_group_ids = [module.blog_sg.security_group_id]
 
   tags = {
-    Name = "Learning Terraform"
+    Name = "Learning Terraform02"
   }
 }
 
@@ -69,6 +69,15 @@ module "blog_alb" {
       backend_protocol = "HTTP"
       backend_port     = 80
       target_type      = "instance"
+      targets = {
+        my_target = {
+          target_id = resource.blog01.instance.id
+          port = 80
+        }
+        my_other_target = {
+          target_id = resource.blog02.instance.id
+          port = 8080
+        }
     }
   ]
 
