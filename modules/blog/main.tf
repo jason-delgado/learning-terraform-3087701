@@ -65,7 +65,7 @@ module "blog_alb" {
 
   target_groups = [
     {
-      name_prefix      = "${var.environment.name}-"
+      name_prefix      = "${var.envirnment.name}-"
       backend_protocol = "HTTP"
       backend_port     = 80
       target_type      = "instance"
@@ -78,7 +78,8 @@ module "blog_alb" {
           target_id = resource.blog02.instance.id
           port = 8080
         }
-    }
+     }
+   }
   ]
 
   http_tcp_listeners = [
