@@ -76,7 +76,7 @@ module "blog_alb" {
         }
         my_other_target = {
           target_id = resource.aws_instance.blog02.id
-          port = 8080
+          port = 80
         }
      }
    }
